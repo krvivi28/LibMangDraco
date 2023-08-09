@@ -1,0 +1,135 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header class="reg-title">Registration</mat-card-header>
+    <mat-card-content>
+      <form class="" [formGroup]="registerForm" (ngSubmit)="handleFormSubmit()">
+        <!-- fname and lname -->
+        <div class="row">
+          <div class="col1">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter First Name</mat-label>
+              <input
+                matInput
+                placeholder="your good name"
+                formControlName="fname"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <!-- <mat-hint>Enter your name</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="col2">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Last Name</mat-label>
+              <input
+                matInput
+                placeholder="enter your last name"
+                formControlName="lname"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <!-- <mat-hint>Enter your name</mat-hint> -->
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- email and DOB  -->
+        <div class="row">
+          <div class="col1">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Email</mat-label>
+              <input
+                matInput
+                placeholder="enter your email"
+                formControlName="email"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <!-- <mat-hint>Enter your name</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="col2">
+            <mat-form-field appearance="outline">
+              <mat-label>D.O.B</mat-label>
+              <input formControlName="dob" matInput [matDatepicker]="picker" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- password and role -->
+        <div class="row">
+          <div class="col1">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                formControlName="password"
+              />
+              <mat-hint>atleast 6 characters </mat-hint>
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="col2">
+            <mat-form-field id="role" appearance="outline">
+              <mat-label>Select Role</mat-label>
+              <mat-select formArrayName="role" formControlName="role">
+                <mat-option value="user">User</mat-option>
+                <mat-option value="librarian">Librarian</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col1">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your contact</mat-label>
+              <input
+                matInput
+                placeholder="your contact number"
+                formControlName="contact"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <!-- <mat-hint>Enter your name</mat-hint> -->
+            </mat-form-field>
+          </div>
+          <div class="col2">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter Address</mat-label>
+              <input
+                matInput
+                placeholder="enter your complete address"
+                formControlName="address"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <!-- <mat-hint>Enter your name</mat-hint> -->
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- reg and login buttons  -->
+        <div class="btns-row">
+          <button
+            class="w-full"
+            type="submit"
+            mat-raised-button
+            color="primary"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
